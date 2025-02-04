@@ -1,7 +1,7 @@
 from antlr4 import *
 from parser.MiniJavaGrammarParser import MiniJavaGrammarParser
 from parser.MiniJavaGrammarVisitor import MiniJavaGrammarVisitor
-from models import *
+from semantic_analyse.models import *
 
 
 class SymbolTableVisitor(MiniJavaGrammarVisitor):
@@ -23,7 +23,7 @@ class SymbolTableVisitor(MiniJavaGrammarVisitor):
         self.current_class = ClassRecord(class_name, class_name)
         self.symbol_table.current.records[class_name] = self.current_class
         self.symbol_table.enter_scope()
-        self.symbol_table.current = self.current_class
+        self.symbol_table.current.containing_class = self.current_class
         self.visitMainMethod(ctx.getChild(3))
         self.symbol_table.exit_scope()
         return None
@@ -37,7 +37,7 @@ class SymbolTableVisitor(MiniJavaGrammarVisitor):
         else:
             self.symbol_table.current.records[class_name] = self.current_class
             self.symbol_table.enter_scope()
-            self.symbol_table.current = self.current_class
+            self.symbol_table.current.containing_class = self.current_class
         for j in range(2, ctx.getChildCount() - 1):
             child = ctx.getChild(j)
             if isinstance(child, MiniJavaGrammarParser.FieldDeclarationContext):
@@ -104,7 +104,7 @@ class SymbolTableVisitor(MiniJavaGrammarVisitor):
             self.symbol_table.current.records[self.current_class.id + "." + method_name] = self.current_method
             self.current_class.method_list.add(method_name, self.current_method)
             self.symbol_table.enter_scope()
-            self.symbol_table.current = self.current_class
+            self.symbol_table.current.containing_class = self.current_class
             if isinstance(ctx.getChild(i + 3), MiniJavaGrammarParser.ParameterListContext):
                 self.visitParameterList(ctx.getChild(i + 3))
             self.visitMethodBody(ctx.getChild(ctx.getChildCount() - 2))
