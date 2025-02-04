@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede6ae89-b426-4f5b-9d88-1ee81f068d66" name="Changes" comment="add gitignore and pycharm files">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/semantic_analyse/controller.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/semantic_analyse/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="ede6ae89-b426-4f5b-9d88-1ee81f068d66" name="Changes" comment="add type checker">
+      <change afterPath="$PROJECT_DIR$/code_generator/controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/code_generator/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Grammar/MiniJavaGrammar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/MiniJavaGrammar.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/semantic_analyse/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/semantic_analyse/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +72,8 @@
       <option name="presentableId" value="Default" />
       <updated>1738548403255</updated>
       <workItem from="1738548406511" duration="6556000" />
-      <workItem from="1738600334744" duration="2230000" />
+      <workItem from="1738600334744" duration="22441000" />
+      <workItem from="1738675020305" duration="5561000" />
     </task>
     <task id="LOCAL-00001" summary="add grammar">
       <option name="closed" value="true" />
@@ -92,7 +91,55 @@
       <option name="project" value="LOCAL" />
       <updated>1738549069756</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add lookup table model">
+      <option name="closed" value="true" />
+      <created>1738602637565</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738602637565</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add lookup table creator">
+      <option name="closed" value="true" />
+      <created>1738602673045</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738602673045</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add requirements.txt">
+      <option name="closed" value="true" />
+      <created>1738602685546</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738602685546</updated>
+    </task>
+    <task id="LOCAL-00006" summary="some refactors">
+      <option name="closed" value="true" />
+      <created>1738602701696</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738602701696</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add parser and lexer and visitor that creat by antlr">
+      <option name="closed" value="true" />
+      <created>1738602744990</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738602744990</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add type checker">
+      <option name="closed" value="true" />
+      <created>1738614536164</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738614536164</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,6 +148,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add grammar" />
     <MESSAGE value="add gitignore and pycharm files" />
-    <option name="LAST_COMMIT_MESSAGE" value="add gitignore and pycharm files" />
+    <MESSAGE value="add lookup table model" />
+    <MESSAGE value="add lookup table creator" />
+    <MESSAGE value="add requirements.txt" />
+    <MESSAGE value="some refactors" />
+    <MESSAGE value="add parser and lexer and visitor that creat by antlr" />
+    <MESSAGE value="add type checker" />
+    <option name="LAST_COMMIT_MESSAGE" value="add type checker" />
   </component>
 </project>
