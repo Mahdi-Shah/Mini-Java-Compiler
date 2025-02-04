@@ -1,3 +1,6 @@
+from dataclasses import field
+
+
 class Record:
     def __init__(self, identifier: str, record_type: str):
         self.id = identifier

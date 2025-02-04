@@ -38,7 +38,7 @@ class SymbolTableVisitor(MiniJavaGrammarVisitor):
             self.symbol_table.current.records[class_name] = self.current_class
             self.symbol_table.enter_scope()
             self.symbol_table.current.containing_class = self.current_class
-        for j in range(2, ctx.getChildCount() - 1):
+        for j in range(3, ctx.getChildCount() - 1):
             child = ctx.getChild(j)
             if isinstance(child, MiniJavaGrammarParser.FieldDeclarationContext):
                 self.visitFieldDeclaration(child)
@@ -74,7 +74,7 @@ class SymbolTableVisitor(MiniJavaGrammarVisitor):
             print(f"[Duplicated] Field Variable \"{name}\" already defined")
         else:
             self.symbol_table.current.records[name] = var
-            self.current_class.field_list.add(name, var)
+            self.current_class.field_list[name] = var
         return None
 
     def visitLocalDeclaration(self, ctx:MiniJavaGrammarParser.LocalDeclarationContext):
@@ -86,7 +86,7 @@ class SymbolTableVisitor(MiniJavaGrammarVisitor):
             print(f"[Duplicated] Field Variable \"{name}\" already defined")
         else:
             self.symbol_table.current.records[name] = var
-            self.current_method.variable_list.add(name, var)
+            self.current_method.variable_list.append(var)
         return None
 
     def visitMethodDeclaration(self, ctx: MiniJavaGrammarParser.MethodDeclarationContext):
@@ -102,7 +102,7 @@ class SymbolTableVisitor(MiniJavaGrammarVisitor):
             print(f"[Duplicated] Method name \"{method_name}\" already defined")
         else:
             self.symbol_table.current.records[self.current_class.id + "." + method_name] = self.current_method
-            self.current_class.method_list.add(method_name, self.current_method)
+            self.current_class.method_list[method_name] = self.current_method
             self.symbol_table.enter_scope()
             self.symbol_table.current.containing_class = self.current_class
             if isinstance(ctx.getChild(i + 3), MiniJavaGrammarParser.ParameterListContext):
@@ -128,7 +128,7 @@ class SymbolTableVisitor(MiniJavaGrammarVisitor):
             print(f"[Duplicated] Parameter name \"{name}\" already defined")
         else:
             self.symbol_table.current.records[name] = var
-            self.current_method.parameter_list.add(var)
+            self.current_method.parameter_list.append(var)
         return None
 
     def visitMethodBody(self, ctx: MiniJavaGrammarParser.MethodBodyContext):
@@ -281,7 +281,7 @@ class TypeCheckVisitor(MiniJavaGrammarVisitor):
         if ctx.getChild(0).getText() == "public":
             i += 1
         return_type = self.visit(ctx.getChild(i)) if not isinstance(ctx.getChild(i), TerminalNode) else None
-        i += 2
+        i += 3
         self.symbol_table.enter_scope()
         if isinstance(ctx.getChild(i), MiniJavaGrammarParser.ParameterListContext):
             self.visitParameterList(ctx.getChild(i))
@@ -333,7 +333,7 @@ class TypeCheckVisitor(MiniJavaGrammarVisitor):
             print(self.error_message(ctx) + f"Undefined ID: {ctx.getText()}")
             self.error_count += 1
             return None
-        return self.symbol_table.lookup(ctx.getText()).getType()
+        return self.symbol_table.lookup(ctx.getText()).type
 
     def visitIdentifierExpression(self, ctx: MiniJavaGrammarParser.IdentifierExpressionContext):
         if ctx.getChildCount() > 1:
@@ -424,10 +424,10 @@ class TypeCheckVisitor(MiniJavaGrammarVisitor):
                             i)) + f"Parameter type error in calling '{method_name}' parameter {j + 1} should be {actual_type}, but found {method_call_param_type}")
                         self.error_count += 1
             i += 1
-        return method_rec.getType()
+        return method_rec.type
 
     def visitThisExpression(self, ctx: MiniJavaGrammarParser.ThisExpressionContext):
-        return self.symbol_table.current.type
+        return self.symbol_table.current.containing_class.type
 
     def visitMethodCallParams(self, ctx: MiniJavaGrammarParser.MethodCallParamsContext):
         children = []
