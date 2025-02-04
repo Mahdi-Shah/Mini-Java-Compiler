@@ -14,21 +14,21 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
 
     def add_instruction(self, opcode, operand1=None, operand2=None, operand3=None):
         instruction = Instruction(opcode, operand1, operand2, operand3)
-        self.class_file.methods[f"{self.current_class}.{self.current_method}"].instruction_list.append(instruction)
+        self.class_file.methods[f"{self.current_class}.{self.current_method.id}"].instruction_list.append(instruction)
         self.line += 1
 
 
     def visitMainClass(self, ctx: MiniJavaGrammarParser.MainClassContext):
-        self.current_class = ctx.getChild(1).get_text()
+        self.current_class = ctx.getChild(1).getText()
         self.symbol_table.enter_scope()
         self.visitMainMethod(ctx.getChild(3))
         self.symbol_table.exit_scope()
         self.add_instruction(Opcode.RETURN)
 
     def visitMainMethod(self, ctx: MiniJavaGrammarParser.MainMethodContext):
-        self.current_method = self.current_class + ".main"
+        self.current_method = self.symbol_table.lookup(self.current_class + ".main")
         method = Method()
-        self.class_file.methods[f"{self.current_class}.{self.current_method}"] = method
+        self.class_file.methods[f"{self.current_class}.{self.current_method.id}"] = method
         self.class_file.main_method = method
         self.symbol_table.enter_scope()
         for child in ctx.children:
@@ -52,7 +52,7 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
 
         self.symbol_table.exit_scope()
 
-    def visitMethodDeclaration(self, ctx):
+    def visitMethodDeclaration(self, ctx: MiniJavaGrammarParser.MethodDeclarationContext):
         i = 1
         if isinstance(ctx.getChild(0), TerminalNode) and ctx.getChild(0).getText() == "public":
             i += 1
@@ -60,12 +60,12 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
         i += 1
 
         self.current_method = self.symbol_table.lookup(f"{self.current_class}.{method_name}")
-        self.current_method.list_.extend(self.current_method.parameter_list)
-        self.current_method.list_.extend(self.current_method.variable_list)
+        self.current_method.parameters_and_values.extend(self.current_method.parameter_list)
+        self.current_method.parameters_and_values.extend(self.current_method.variable_list)
 
         method = Method()
-        method.param_list.extend(self.current_method.param_list)
-        method.list_.extend(self.current_method.list_)
+        method.param_list.extend(self.current_method.parameter_list)
+        method.list_.extend(self.current_method.parameters_and_values)
         method.var_values = [0] * len(method.list_)
 
         self.class_file.methods[f"{self.current_class}.{self.current_method.id}"] = method
@@ -80,15 +80,16 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
     def visitMethodCallExpression(self, ctx: MiniJavaGrammarParser.MethodCallExpressionContext):
         class_name = self.visit(ctx.getChild(0))
         class_rec = self.symbol_table.lookup(class_name)
-        n = ctx.getChildrenCount()
+        n = len(ctx.children)
         i = 2
         while i < n:
             method_name = ctx.getChild(i).getText()
-            method_rec = class_rec.method_list.get(method_name)
+            method_rec = class_rec.method_list[method_name]
             i += 1
             self.visitMethodCallParams(ctx.getChild(i))
             self.add_instruction(Opcode.CALL, f"{class_name}.{method_name}", len(method_rec.parameter_list) + 1)
             class_name = method_rec.type
+            i += 1
 
     def visitVariableAssignmentStatement(self, ctx: MiniJavaGrammarParser.VariableAssignmentStatementContext):
         lhs = self.visitIdentifier(ctx.getChild(0))
@@ -99,11 +100,10 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
         return ctx.getText()
 
     def visitThisExpression(self, ctx: MiniJavaGrammarParser.ThisExpressionContext):
-        # TODO : correct it
-        pass
+        return self.current_class
 
     def visitIdentifierExpression(self, ctx: MiniJavaGrammarParser.IdentifierExpressionContext):
-        var_name = ctx.get_text()
+        var_name = ctx.getText()
         temp_value = self.get_temp_var()
         self.add_instruction(Opcode.ASSIGN, self.get_temp_var(), var_name)
         return temp_value
@@ -128,7 +128,7 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
         self.add_instruction(Opcode.GOTO, before_while_condition_label)
         after_while_label = self.get_label()
         self.add_instruction(Opcode.LABEL, after_while_label)
-        self.class_file.methods[self.current_class + "." + self.current_method].instruction_list[if_false_instruction_number].operand2 = after_while_label
+        self.class_file.methods[self.current_class + "." + self.current_method.id].instruction_list[if_false_instruction_number].operand2 = after_while_label
 
     def visitPrintStatement(self, ctx: MiniJavaGrammarParser.PrintStatementContext):
         expression_temp_var = self.visit(ctx.getChild(2))
@@ -170,6 +170,9 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
 
     def visitSubExpression(self, ctx):
         return self.visit_operators(ctx, Opcode.SUB)
+
+    def visitObjectInstantiationExpression(self, ctx: MiniJavaGrammarParser.ObjectInstantiationExpressionContext):
+        return ctx.getChild(1).getText()
 
     def visit_operators(self, ctx: MiniJavaGrammarParser.ExpressionContext, opcode):
         op1_temp_var = self.visit(ctx.getChild(0))
