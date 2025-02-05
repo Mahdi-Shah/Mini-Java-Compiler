@@ -25,7 +25,7 @@ def main():
             return
     else:
         try:
-            file_name = "C:\\Users\\Mahdi\\Desktop\\Class\\Compiler\\Project\\2\\compiler-antlr4\\4DV506.sm222cf.PA1\\testFiles\\factorial.java"
+            file_name = "examples/LinearSearch.java"
             input_stream = FileStream(file_name, encoding='utf-8')
             file_name = file_name.rsplit('.', 1)[0]
         except IOError:
@@ -60,7 +60,7 @@ def main():
     add_nodes_edges(tree)
 
     # Render and display the tree
-    # dot.render('parse_tree', format='png', view=True)
+    dot.render('parse_tree', format='png', view=True)
 
     # Symbol Table Visitor
     symbol_table_visitor = SymbolTableVisitor()
@@ -83,7 +83,7 @@ def main():
             visited_st.reset_table()
             cgv = CodeGenVisitor(visited_st)
             cgv.visit(tree)
-            print("\n\t PRINTING ICODEs")
+            print("\n\t PRINTING Three Address Codes")
             cgv.class_file.print()
             # cgv.writeToFile(file_name)
 

@@ -24,7 +24,7 @@ class MethodRecord(Record):
         super().__init__(identifier, record_type)
         self.parameter_list = []
         self.variable_list = []
-        self.instruction_list = []
+        self.parameters_and_values = []
 
 
 class ClassRecord(Record):
@@ -63,7 +63,6 @@ class Scope:
 
     def print_scope(self):
         left_align_format = "| %-29s | %-19s | %-27s|"
-        print("+-------------------------------+---------------------+----------------------------+")
         for key, value in self.records.items():
             record_class = type(value).__name__
             print(left_align_format % (key, value.get_type(), record_class))
@@ -96,4 +95,3 @@ class SymbolTable:
         print("|             ID                |         TYPE        |        SCOPE/RECORD        |")
         print("+-------------------------------+---------------------+----------------------------+")
         self.root.print_scope()
-        print("+-------------------------------+---------------------+----------------------------+")

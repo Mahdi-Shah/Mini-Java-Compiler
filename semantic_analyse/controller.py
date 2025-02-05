@@ -497,7 +497,7 @@ class TypeCheckVisitor(MiniJavaGrammarVisitor):
     def visitLessThanExpression(self, ctx: MiniJavaGrammarParser.LessThanExpressionContext):
         return self.visit_compare_expression(ctx, "<")
 
-    def visitGreaterthanExpression(self, ctx):
+    def visitGreaterThanExpression(self, ctx):
         return self.visit_compare_expression(ctx, ">")
 
     def visitAndExpression(self, ctx: MiniJavaGrammarParser.AndExpressionContext):

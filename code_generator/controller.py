@@ -1,8 +1,12 @@
+from sys import call_tracing
+
+from Tools.scripts.findlinksto import visit
 from antlr4 import *
 from code_generator.models import *
 from parser.MiniJavaGrammarParser import MiniJavaGrammarParser
 from parser.MiniJavaGrammarVisitor import MiniJavaGrammarVisitor
-from semantic_analyse.models import SymbolTable
+from semantic_analyse.models import SymbolTable, ClassRecord
+
 
 class CodeGenVisitor(MiniJavaGrammarVisitor):
     def __init__(self, symbol_table: SymbolTable):
@@ -46,7 +50,7 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
         for j in range(i, n - 1):
             child = ctx.getChild(j)
             if isinstance(child, MiniJavaGrammarParser.FieldDeclarationContext):
-                print(f"Error: Field declarations are not allowed in Tiny Java at line {child.start.line}")
+                pass
             else:
                 self.visitMethodDeclaration(child)
 
@@ -80,16 +84,25 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
     def visitMethodCallExpression(self, ctx: MiniJavaGrammarParser.MethodCallExpressionContext):
         class_name = self.visit(ctx.getChild(0))
         class_rec = self.symbol_table.lookup(class_name)
+        if not isinstance(class_rec, ClassRecord):
+            class_rec = self.symbol_table.lookup(class_rec.type)
         n = len(ctx.children)
         i = 2
+        call_output_temp_var = None
         while i < n:
             method_name = ctx.getChild(i).getText()
             method_rec = class_rec.method_list[method_name]
             i += 1
             self.visitMethodCallParams(ctx.getChild(i))
-            self.add_instruction(Opcode.CALL, f"{class_name}.{method_name}", len(method_rec.parameter_list) + 1)
+            if method_rec.type is None:
+                self.add_instruction(Opcode.ACALL, f"{class_name}.{method_name}", len(method_rec.parameter_list))
+            else:
+                call_output_temp_var = self.get_temp_var()
+                self.add_instruction(Opcode.LCALL, call_output_temp_var, f"{class_name}.{method_name}", len(method_rec.parameter_list))
+            self.add_instruction(Opcode.POP_PARAM, len(method_rec.parameter_list) * 8)
             class_name = method_rec.type
             i += 1
+        return call_output_temp_var
 
     def visitVariableAssignmentStatement(self, ctx: MiniJavaGrammarParser.VariableAssignmentStatementContext):
         lhs = self.visitIdentifier(ctx.getChild(0))
@@ -103,10 +116,16 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
         return self.current_class
 
     def visitIdentifierExpression(self, ctx: MiniJavaGrammarParser.IdentifierExpressionContext):
-        var_name = ctx.getText()
-        temp_value = self.get_temp_var()
-        self.add_instruction(Opcode.ASSIGN, self.get_temp_var(), var_name)
-        return temp_value
+        if len(ctx.children) > 1 and ctx.getText().startswith('-'):
+            var_name = ctx.getText()
+            temp_value = self.get_temp_var()
+            self.add_instruction(Opcode.ASSIGN, self.get_temp_var(), var_name)
+            return temp_value
+        else:
+            if ctx.getText().startswith('+'):
+                return ctx.getText()[1:]
+            else:
+                return ctx.getText()
 
     def visitIntegerLitExpression(self, ctx: MiniJavaGrammarParser.IntegerLitExpressionContext):
         return int(ctx.getText())
@@ -132,8 +151,8 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
 
     def visitPrintStatement(self, ctx: MiniJavaGrammarParser.PrintStatementContext):
         expression_temp_var = self.visit(ctx.getChild(2))
-        self.add_instruction(Opcode.PARAM, expression_temp_var)
-        self.add_instruction(Opcode.PRINT)
+        self.add_instruction(Opcode.PUSH_PARAM, expression_temp_var)
+        self.add_instruction(Opcode.ACALL, "print", 1)
 
     def visitIfElseStatement(self, ctx: MiniJavaGrammarParser.IfElseStatementContext):
         condition_temp_var = self.visit(ctx.getChild(2))  # Condition
@@ -146,11 +165,11 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
         self.add_instruction(Opcode.LABEL, before_else_label)
         method = self.class_file.methods[self.current_class + '.' + self.current_method.id]
         method.instruction_list[if_instruction_number].operand2 = before_else_label
-        if ctx.getChildCount() > 4:
+        if len(ctx.children) > 4:
             self.visit(ctx.getChild(6))  # Else-body
             after_else_label = self.get_label()
             self.add_instruction(Opcode.LABEL, after_else_label)
-            method.instruction_list[goto_instruction_number].operand2 = after_else_label
+            method.instruction_list[goto_instruction_number].operand1 = after_else_label
 
     def visitLessThanExpression(self, ctx: MiniJavaGrammarParser.LessThanExpressionContext):
         op1_temp_var = self.visit(ctx.getChild(0))
@@ -186,6 +205,29 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
         result_temp_var = self.get_temp_var()
         self.add_instruction(Opcode.NOT, result_temp_var, op1_temp_var)
         return result_temp_var
+
+    def visitMethodCallParams(self, ctx: MiniJavaGrammarParser.MethodCallParamsContext):
+        i = 1
+        n = len(ctx.children)
+        while i < n:
+            if isinstance(ctx.getChild(i), MiniJavaGrammarParser.ExpressionContext):
+                parameter_temp_var = self.visit(ctx.getChild(i))
+                self.add_instruction(Opcode.PUSH_PARAM, parameter_temp_var)
+            i += 2
+
+    def visitParenthesesExpression(self, ctx: MiniJavaGrammarParser.ParenthesesExpressionContext):
+        return self.visit(ctx.getChild(1))
+
+    def visitArrayAssignmentStatement(self, ctx: MiniJavaGrammarParser.ArrayAssignmentStatementContext):
+        rhs_array_identifier = self.visitIdentifier(ctx.getChild(0))
+        index_var = self.visit(ctx.getChild(2))
+        lhs = self.visit(ctx.getChild(5))
+        self.add_instruction(Opcode.ASSIGN, f"{rhs_array_identifier}[{index_var}]", lhs)
+
+    def visitArrayAccessExpression(self, ctx: MiniJavaGrammarParser.ArrayAccessExpressionContext):
+        identifier = self.visit(ctx.getChild(0))
+        index_var = self.visit(ctx.getChild(2))
+        return f"{identifier}[{index_var}]"
 
     def get_temp_var(self):
         return f"t{self.line}"

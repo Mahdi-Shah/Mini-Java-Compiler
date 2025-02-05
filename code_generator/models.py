@@ -19,8 +19,10 @@ class Opcode(Enum):
     GOTO = "GOTO"               # goto label
     IF_TRUE = "IF_TRUE"         # if (a) goto label
     IF_FALSE = "IF_FALSE"       # if (!a) goto label
-    PARAM = "PARAM"             # param a (pass parameter for function call)
-    CALL = "CALL"               # t = call func, nargs
+    PUSH_PARAM = "PUSH_PARAM"   # push param a (pass parameter for function call)
+    POP_PARAM = "POP_PARAM"     # pop param a
+    LCALL = "LCALL"             # t = call func, nargs
+    ACALL = "ACALL"             # call func, nargs
     RETURN = "RETURN"           # return t
     PRINT = "PRINT"             # print t
     LABEL = "LABEL"             # label: (define a label)
@@ -61,10 +63,14 @@ class Instruction:
                 return f"if {self.operand1} goto {self.operand2}"
             case Opcode.IF_FALSE:
                 return f"if not {self.operand1} goto {self.operand2}"
-            case Opcode.PARAM:
-                return f"param {self.operand1}"
-            case Opcode.CALL:
-                return f"{self.operand1} = call {self.operand2}, {self.operand3}"
+            case Opcode.PUSH_PARAM:
+                return f"push param {self.operand1}"
+            case Opcode.POP_PARAM:
+                return f"pop param {self.operand1}"
+            case Opcode.LCALL:
+                return f"{self.operand1} = lcall {self.operand2}, {self.operand3}"
+            case Opcode.ACALL:
+                return f"lcall {self.operand1}, {self.operand2}"
             case Opcode.RETURN:
                 return f"return {self.operand1}"
             case Opcode.PRINT:
