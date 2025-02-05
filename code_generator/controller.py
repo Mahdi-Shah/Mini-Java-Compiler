@@ -1,6 +1,3 @@
-from sys import call_tracing
-
-from Tools.scripts.findlinksto import visit
 from antlr4 import *
 from code_generator.models import *
 from parser.MiniJavaGrammarParser import MiniJavaGrammarParser
@@ -228,6 +225,10 @@ class CodeGenVisitor(MiniJavaGrammarVisitor):
         identifier = self.visit(ctx.getChild(0))
         index_var = self.visit(ctx.getChild(2))
         return f"{identifier}[{index_var}]"
+
+    def visitDotlengthExpression(self, ctx: MiniJavaGrammarParser.DotlengthExpressionContext):
+        temp_var = self.visit(ctx.getChild(0))
+        return f"len({temp_var})"
 
     def get_temp_var(self):
         return f"t{self.line}"
