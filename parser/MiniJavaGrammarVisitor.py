@@ -134,11 +134,6 @@ class MiniJavaGrammarVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MiniJavaGrammarParser#greaterthanExpression.
-    def visitGreaterthanExpression(self, ctx:MiniJavaGrammarParser.GreaterthanExpressionContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by MiniJavaGrammarParser#arrayInstantiationExpression.
     def visitArrayInstantiationExpression(self, ctx:MiniJavaGrammarParser.ArrayInstantiationExpressionContext):
         return self.visitChildren(ctx)
@@ -161,6 +156,11 @@ class MiniJavaGrammarVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by MiniJavaGrammarParser#divExpression.
     def visitDivExpression(self, ctx:MiniJavaGrammarParser.DivExpressionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MiniJavaGrammarParser#greaterThanExpression.
+    def visitGreaterThanExpression(self, ctx:MiniJavaGrammarParser.GreaterThanExpressionContext):
         return self.visitChildren(ctx)
 
 

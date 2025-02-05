@@ -100,32 +100,32 @@ def serializedATN():
         0,231,232,1,0,0,0,232,234,1,0,0,0,233,231,1,0,0,0,234,235,5,3,0,
         0,235,43,1,0,0,0,236,237,5,39,0,0,237,238,3,48,24,0,238,239,5,42,
         0,0,239,45,1,0,0,0,240,241,3,48,24,0,241,242,5,42,0,0,242,47,1,0,
-        0,0,243,244,6,24,-1,0,244,245,5,34,0,0,245,274,3,48,24,24,246,247,
-        5,24,0,0,247,248,3,22,11,0,248,249,5,37,0,0,249,250,5,38,0,0,250,
-        274,1,0,0,0,251,252,5,24,0,0,252,253,3,20,10,0,253,254,5,35,0,0,
-        254,255,3,48,24,0,255,256,5,36,0,0,256,274,1,0,0,0,257,274,5,25,
-        0,0,258,259,5,37,0,0,259,260,3,48,24,0,260,261,5,38,0,0,261,274,
-        1,0,0,0,262,274,5,47,0,0,263,274,5,48,0,0,264,266,7,0,0,0,265,264,
-        1,0,0,0,265,266,1,0,0,0,266,267,1,0,0,0,267,274,5,49,0,0,268,270,
-        7,0,0,0,269,268,1,0,0,0,269,270,1,0,0,0,270,271,1,0,0,0,271,274,
-        3,22,11,0,272,274,5,41,0,0,273,243,1,0,0,0,273,246,1,0,0,0,273,251,
+        0,0,243,244,6,24,-1,0,244,245,5,24,0,0,245,246,3,22,11,0,246,247,
+        5,37,0,0,247,248,5,38,0,0,248,274,1,0,0,0,249,250,5,24,0,0,250,251,
+        3,20,10,0,251,252,5,35,0,0,252,253,3,48,24,0,253,254,5,36,0,0,254,
+        274,1,0,0,0,255,256,5,34,0,0,256,274,3,48,24,8,257,274,5,25,0,0,
+        258,259,5,37,0,0,259,260,3,48,24,0,260,261,5,38,0,0,261,274,1,0,
+        0,0,262,274,5,47,0,0,263,274,5,48,0,0,264,266,7,0,0,0,265,264,1,
+        0,0,0,265,266,1,0,0,0,266,267,1,0,0,0,267,274,5,49,0,0,268,270,7,
+        0,0,0,269,268,1,0,0,0,269,270,1,0,0,0,270,271,1,0,0,0,271,274,3,
+        22,11,0,272,274,5,41,0,0,273,243,1,0,0,0,273,249,1,0,0,0,273,255,
         1,0,0,0,273,257,1,0,0,0,273,258,1,0,0,0,273,262,1,0,0,0,273,263,
         1,0,0,0,273,265,1,0,0,0,273,269,1,0,0,0,273,272,1,0,0,0,274,336,
-        1,0,0,0,275,276,10,16,0,0,276,277,5,33,0,0,277,335,3,48,24,17,278,
-        279,10,15,0,0,279,280,5,26,0,0,280,335,3,48,24,16,281,282,10,14,
-        0,0,282,283,5,31,0,0,283,335,3,48,24,15,284,285,10,13,0,0,285,286,
-        5,32,0,0,286,335,3,48,24,14,287,288,10,12,0,0,288,290,5,30,0,0,289,
+        1,0,0,0,275,276,10,17,0,0,276,277,5,33,0,0,277,335,3,48,24,18,278,
+        279,10,16,0,0,279,280,5,26,0,0,280,335,3,48,24,17,281,282,10,15,
+        0,0,282,283,5,31,0,0,283,335,3,48,24,16,284,285,10,14,0,0,285,286,
+        5,32,0,0,286,335,3,48,24,15,287,288,10,13,0,0,288,290,5,30,0,0,289,
         291,5,40,0,0,290,289,1,0,0,0,290,291,1,0,0,0,291,292,1,0,0,0,292,
-        335,3,48,24,13,293,294,10,11,0,0,294,296,5,28,0,0,295,297,5,40,0,
+        335,3,48,24,14,293,294,10,12,0,0,294,296,5,28,0,0,295,297,5,40,0,
         0,296,295,1,0,0,0,296,297,1,0,0,0,297,298,1,0,0,0,298,335,3,48,24,
-        12,299,300,10,10,0,0,300,301,7,1,0,0,301,302,5,40,0,0,302,335,3,
-        48,24,11,303,304,10,9,0,0,304,305,5,29,0,0,305,335,3,48,24,10,306,
-        307,10,8,0,0,307,308,5,27,0,0,308,335,3,48,24,9,309,310,10,23,0,
+        13,299,300,10,11,0,0,300,301,7,1,0,0,301,302,5,40,0,0,302,335,3,
+        48,24,12,303,304,10,10,0,0,304,305,5,29,0,0,305,335,3,48,24,11,306,
+        307,10,9,0,0,307,308,5,27,0,0,308,335,3,48,24,10,309,310,10,24,0,
         0,310,311,5,35,0,0,311,312,3,48,24,0,312,313,5,36,0,0,313,335,1,
-        0,0,0,314,315,10,22,0,0,315,335,5,21,0,0,316,317,10,21,0,0,317,318,
+        0,0,0,314,315,10,23,0,0,315,335,5,21,0,0,316,317,10,22,0,0,317,318,
         5,22,0,0,318,319,5,37,0,0,319,320,3,48,24,0,320,321,5,38,0,0,321,
-        335,1,0,0,0,322,323,10,20,0,0,323,324,5,23,0,0,324,335,3,22,11,0,
-        325,330,10,19,0,0,326,327,5,23,0,0,327,328,3,22,11,0,328,329,3,50,
+        335,1,0,0,0,322,323,10,21,0,0,323,324,5,23,0,0,324,335,3,22,11,0,
+        325,330,10,20,0,0,326,327,5,23,0,0,327,328,3,22,11,0,328,329,3,50,
         25,0,329,331,1,0,0,0,330,326,1,0,0,0,331,332,1,0,0,0,332,330,1,0,
         0,0,332,333,1,0,0,0,333,335,1,0,0,0,334,275,1,0,0,0,334,278,1,0,
         0,0,334,281,1,0,0,0,334,284,1,0,0,0,334,287,1,0,0,0,334,293,1,0,
@@ -1872,30 +1872,6 @@ class MiniJavaGrammarParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
-    class GreaterthanExpressionContext(ExpressionContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a MiniJavaGrammarParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def expression(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(MiniJavaGrammarParser.ExpressionContext)
-            else:
-                return self.getTypedRuleContext(MiniJavaGrammarParser.ExpressionContext,i)
-
-        def GT(self):
-            return self.getToken(MiniJavaGrammarParser.GT, 0)
-        def EQ(self):
-            return self.getToken(MiniJavaGrammarParser.EQ, 0)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitGreaterthanExpression" ):
-                return visitor.visitGreaterthanExpression(self)
-            else:
-                return visitor.visitChildren(self)
-
-
     class ArrayInstantiationExpressionContext(ExpressionContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a MiniJavaGrammarParser.ExpressionContext
@@ -2007,6 +1983,30 @@ class MiniJavaGrammarParser ( Parser ):
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitDivExpression" ):
                 return visitor.visitDivExpression(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class GreaterThanExpressionContext(ExpressionContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a MiniJavaGrammarParser.ExpressionContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expression(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(MiniJavaGrammarParser.ExpressionContext)
+            else:
+                return self.getTypedRuleContext(MiniJavaGrammarParser.ExpressionContext,i)
+
+        def GT(self):
+            return self.getToken(MiniJavaGrammarParser.GT, 0)
+        def EQ(self):
+            return self.getToken(MiniJavaGrammarParser.EQ, 0)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitGreaterThanExpression" ):
+                return visitor.visitGreaterThanExpression(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -2375,44 +2375,44 @@ class MiniJavaGrammarParser ( Parser ):
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
             if la_ == 1:
-                localctx = MiniJavaGrammarParser.NotExpressionContext(self, localctx)
+                localctx = MiniJavaGrammarParser.ObjectInstantiationExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
                 self.state = 244
-                self.match(MiniJavaGrammarParser.NOT)
-                self.state = 245
-                self.expression(24)
-                pass
-
-            elif la_ == 2:
-                localctx = MiniJavaGrammarParser.ObjectInstantiationExpressionContext(self, localctx)
-                self._ctx = localctx
-                _prevctx = localctx
-                self.state = 246
                 self.match(MiniJavaGrammarParser.T__23)
-                self.state = 247
+                self.state = 245
                 self.identifier()
-                self.state = 248
+                self.state = 246
                 self.match(MiniJavaGrammarParser.LP)
-                self.state = 249
+                self.state = 247
                 self.match(MiniJavaGrammarParser.RP)
                 pass
 
-            elif la_ == 3:
+            elif la_ == 2:
                 localctx = MiniJavaGrammarParser.ArrayInstantiationExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 251
+                self.state = 249
                 self.match(MiniJavaGrammarParser.T__23)
-                self.state = 252
+                self.state = 250
                 self.type_()
-                self.state = 253
+                self.state = 251
                 self.match(MiniJavaGrammarParser.LSB)
-                self.state = 254
+                self.state = 252
                 self.expression(0)
-                self.state = 255
+                self.state = 253
                 self.match(MiniJavaGrammarParser.RSB)
+                pass
+
+            elif la_ == 3:
+                localctx = MiniJavaGrammarParser.NotExpressionContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 255
+                self.match(MiniJavaGrammarParser.NOT)
+                self.state = 256
+                self.expression(8)
                 pass
 
             elif la_ == 4:
@@ -2518,61 +2518,61 @@ class MiniJavaGrammarParser ( Parser ):
                         localctx = MiniJavaGrammarParser.MulExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 275
-                        if not self.precpred(self._ctx, 16):
+                        if not self.precpred(self._ctx, 17):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 16)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 17)")
                         self.state = 276
                         self.match(MiniJavaGrammarParser.TIMES)
                         self.state = 277
-                        self.expression(17)
+                        self.expression(18)
                         pass
 
                     elif la_ == 2:
                         localctx = MiniJavaGrammarParser.DivExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 278
-                        if not self.precpred(self._ctx, 15):
+                        if not self.precpred(self._ctx, 16):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 15)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 16)")
                         self.state = 279
                         self.match(MiniJavaGrammarParser.DIV)
                         self.state = 280
-                        self.expression(16)
+                        self.expression(17)
                         pass
 
                     elif la_ == 3:
                         localctx = MiniJavaGrammarParser.AddExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 281
-                        if not self.precpred(self._ctx, 14):
+                        if not self.precpred(self._ctx, 15):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 14)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 15)")
                         self.state = 282
                         self.match(MiniJavaGrammarParser.PLUS)
                         self.state = 283
-                        self.expression(15)
+                        self.expression(16)
                         pass
 
                     elif la_ == 4:
                         localctx = MiniJavaGrammarParser.SubExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 284
-                        if not self.precpred(self._ctx, 13):
+                        if not self.precpred(self._ctx, 14):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 13)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 14)")
                         self.state = 285
                         self.match(MiniJavaGrammarParser.MINUS)
                         self.state = 286
-                        self.expression(14)
+                        self.expression(15)
                         pass
 
                     elif la_ == 5:
                         localctx = MiniJavaGrammarParser.LessThanExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 287
-                        if not self.precpred(self._ctx, 12):
+                        if not self.precpred(self._ctx, 13):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 12)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 13)")
                         self.state = 288
                         self.match(MiniJavaGrammarParser.LT)
                         self.state = 290
@@ -2584,16 +2584,16 @@ class MiniJavaGrammarParser ( Parser ):
 
 
                         self.state = 292
-                        self.expression(13)
+                        self.expression(14)
                         pass
 
                     elif la_ == 6:
-                        localctx = MiniJavaGrammarParser.GreaterthanExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
+                        localctx = MiniJavaGrammarParser.GreaterThanExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 293
-                        if not self.precpred(self._ctx, 11):
+                        if not self.precpred(self._ctx, 12):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 11)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 12)")
                         self.state = 294
                         self.match(MiniJavaGrammarParser.GT)
                         self.state = 296
@@ -2605,16 +2605,16 @@ class MiniJavaGrammarParser ( Parser ):
 
 
                         self.state = 298
-                        self.expression(12)
+                        self.expression(13)
                         pass
 
                     elif la_ == 7:
                         localctx = MiniJavaGrammarParser.EqualityExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 299
-                        if not self.precpred(self._ctx, 10):
+                        if not self.precpred(self._ctx, 11):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 11)")
                         self.state = 300
                         _la = self._input.LA(1)
                         if not(_la==34 or _la==40):
@@ -2625,42 +2625,42 @@ class MiniJavaGrammarParser ( Parser ):
                         self.state = 301
                         self.match(MiniJavaGrammarParser.EQ)
                         self.state = 302
-                        self.expression(11)
+                        self.expression(12)
                         pass
 
                     elif la_ == 8:
                         localctx = MiniJavaGrammarParser.AndExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 303
-                        if not self.precpred(self._ctx, 9):
+                        if not self.precpred(self._ctx, 10):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
                         self.state = 304
                         self.match(MiniJavaGrammarParser.AND)
                         self.state = 305
-                        self.expression(10)
+                        self.expression(11)
                         pass
 
                     elif la_ == 9:
                         localctx = MiniJavaGrammarParser.OrExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 306
-                        if not self.precpred(self._ctx, 8):
+                        if not self.precpred(self._ctx, 9):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
                         self.state = 307
                         self.match(MiniJavaGrammarParser.OR)
                         self.state = 308
-                        self.expression(9)
+                        self.expression(10)
                         pass
 
                     elif la_ == 10:
                         localctx = MiniJavaGrammarParser.ArrayAccessExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 309
-                        if not self.precpred(self._ctx, 23):
+                        if not self.precpred(self._ctx, 24):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 23)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 24)")
                         self.state = 310
                         self.match(MiniJavaGrammarParser.LSB)
                         self.state = 311
@@ -2673,9 +2673,9 @@ class MiniJavaGrammarParser ( Parser ):
                         localctx = MiniJavaGrammarParser.DotlengthExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 314
-                        if not self.precpred(self._ctx, 22):
+                        if not self.precpred(self._ctx, 23):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 22)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 23)")
                         self.state = 315
                         self.match(MiniJavaGrammarParser.T__20)
                         pass
@@ -2684,9 +2684,9 @@ class MiniJavaGrammarParser ( Parser ):
                         localctx = MiniJavaGrammarParser.DotcharatExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 316
-                        if not self.precpred(self._ctx, 21):
+                        if not self.precpred(self._ctx, 22):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 21)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 22)")
                         self.state = 317
                         self.match(MiniJavaGrammarParser.T__21)
                         self.state = 318
@@ -2701,9 +2701,9 @@ class MiniJavaGrammarParser ( Parser ):
                         localctx = MiniJavaGrammarParser.FieldAccessExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 322
-                        if not self.precpred(self._ctx, 20):
+                        if not self.precpred(self._ctx, 21):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 20)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 21)")
                         self.state = 323
                         self.match(MiniJavaGrammarParser.T__22)
                         self.state = 324
@@ -2714,9 +2714,9 @@ class MiniJavaGrammarParser ( Parser ):
                         localctx = MiniJavaGrammarParser.MethodCallExpressionContext(self, MiniJavaGrammarParser.ExpressionContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
                         self.state = 325
-                        if not self.precpred(self._ctx, 19):
+                        if not self.precpred(self._ctx, 20):
                             from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 19)")
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 20)")
                         self.state = 330 
                         self._errHandler.sync(self)
                         _alt = 1
@@ -2836,59 +2836,59 @@ class MiniJavaGrammarParser ( Parser ):
 
     def expression_sempred(self, localctx:ExpressionContext, predIndex:int):
             if predIndex == 0:
-                return self.precpred(self._ctx, 16)
+                return self.precpred(self._ctx, 17)
          
 
             if predIndex == 1:
-                return self.precpred(self._ctx, 15)
+                return self.precpred(self._ctx, 16)
          
 
             if predIndex == 2:
-                return self.precpred(self._ctx, 14)
+                return self.precpred(self._ctx, 15)
          
 
             if predIndex == 3:
-                return self.precpred(self._ctx, 13)
+                return self.precpred(self._ctx, 14)
          
 
             if predIndex == 4:
-                return self.precpred(self._ctx, 12)
+                return self.precpred(self._ctx, 13)
          
 
             if predIndex == 5:
-                return self.precpred(self._ctx, 11)
+                return self.precpred(self._ctx, 12)
          
 
             if predIndex == 6:
-                return self.precpred(self._ctx, 10)
+                return self.precpred(self._ctx, 11)
          
 
             if predIndex == 7:
-                return self.precpred(self._ctx, 9)
+                return self.precpred(self._ctx, 10)
          
 
             if predIndex == 8:
-                return self.precpred(self._ctx, 8)
+                return self.precpred(self._ctx, 9)
          
 
             if predIndex == 9:
-                return self.precpred(self._ctx, 23)
+                return self.precpred(self._ctx, 24)
          
 
             if predIndex == 10:
-                return self.precpred(self._ctx, 22)
+                return self.precpred(self._ctx, 23)
          
 
             if predIndex == 11:
-                return self.precpred(self._ctx, 21)
+                return self.precpred(self._ctx, 22)
          
 
             if predIndex == 12:
-                return self.precpred(self._ctx, 20)
+                return self.precpred(self._ctx, 21)
          
 
             if predIndex == 13:
-                return self.precpred(self._ctx, 19)
+                return self.precpred(self._ctx, 20)
          
 
 

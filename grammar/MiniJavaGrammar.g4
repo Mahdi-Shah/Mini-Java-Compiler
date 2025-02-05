@@ -64,8 +64,7 @@ methodCallStatement: expression SC;
 
 expression
 :
-      NOT expression # notExpression
-	| expression LSB expression RSB                     # arrayAccessExpression
+    expression LSB expression RSB                       # arrayAccessExpression
 	| expression '.length'                              # dotlengthExpression
 	| expression '.charAt' '(' expression')'            # dotcharatExpression
 	| expression '.' identifier                         # fieldAccessExpression
@@ -77,10 +76,11 @@ expression
 	| expression PLUS expression                        # addExpression
 	| expression MINUS expression                       # subExpression
 	| expression LT(EQ)? expression                     # lessThanExpression
-	| expression GT(EQ)? expression                     # greaterthanExpression
+	| expression GT(EQ)? expression                     # greaterThanExpression
 	| expression (EQ|NOT) EQ expression                 # equalityExpression
 	| expression AND expression                         # andExpression
 	| expression OR expression                          # orExpression
+	| NOT expression                                    # notExpression
 	|'this'                                             # thisExpression
 	| '(' expression ')'                                # parenthesesExpression
 	| STRING                                            # stringExpression
