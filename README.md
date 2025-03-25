@@ -10,6 +10,59 @@ This script serves as a compiler for MiniJava programs. It performs lexical, syn
 - **Code Generation**: Produces Three-Address Code (TAC) for valid MiniJava programs.
 - **Visualization**: Generates a graphical representation of the parse tree.
 
+## Parse Tree Visualization
+This image is a sample parse tree for the file Factorial.java:
+![Parse Tree for Test.java](examples/Factorial.png)
+
+## Sample Program Output  
+
+### Printing the Symbol Table:
+```
++-------------------------------+---------------------+----------------------------+
+|             ID                |         TYPE        |        SCOPE/RECORD        |
++-------------------------------+---------------------+----------------------------+
+| Factorial                     | Factorial           | ClassRecord                |
++-------------------------------+---------------------+----------------------------+
+| Fac                           | Fac                 | ClassRecord                |
++-------------------------------+---------------------+----------------------------+
+| Factorial.main                | None                | MethodRecord               |
++-------------------------------+---------------------+----------------------------+
+| Fac.ComputeFac                | int                 | MethodRecord               |
++-------------------------------+---------------------+----------------------------+
+| num                           | int                 | Record                     |
++-------------------------------+---------------------+----------------------------+
+| num_aux                       | int                 | Record                     |
++-------------------------------+---------------------+----------------------------+
+```
+### PRINTING Three Address Codes
+
+```
+METHOD Factorial.main
+
+0  push param 10
+1  t1 = lcall Fac.ComputeFac, 1
+2  pop param 8
+3  push param t1
+4  lcall print, 1
+5  return None
+
+METHOD Fac.ComputeFac
+
+0  t0 = (num < 1)
+1  if not t0 goto L4
+2  num_aux = 1
+3  goto L11
+4  label L4:
+5  t5 = num - 1
+6  push param t5
+7  t7 = lcall Fac.ComputeFac, 1
+8  pop param 8
+9  t9 = num * t7
+10  num_aux = t9
+11  label L11:
+12  return num_aux
+```
+
 ## Prerequisites
 ### Install Dependencies
 Ensure you have Python (>=3.6) installed along with the required dependencies:

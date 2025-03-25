@@ -24,7 +24,7 @@ def main():
             return
     else:
         try:
-            file_name = "examples/BinarySearch.java"
+            file_name = "examples/Factorial.java"
             input_stream = FileStream(file_name, encoding='utf-8')
             file_name = file_name.rsplit('.', 1)[0]
         except IOError:
